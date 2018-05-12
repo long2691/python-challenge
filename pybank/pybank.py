@@ -1,3 +1,4 @@
+
 import os
 import csv
 #Total Months: 25
@@ -38,14 +39,16 @@ with open(csvpath, newline='') as csvfile:
     #print(revenue_change)
     #print greatest increase
     #print(date_list)
-    print(date_list[revenue_change.index(max(revenue_change)) ] + " " + str(max(revenue_change)))
-    #print greatest decrease
-    #print(max(revenue_change))
-
-    print(date_list[revenue_change.index(min(revenue_change)) ] + " " + str(min(revenue_change)))
-    print(str(date_list[0]) + " " +  str(revenue_list[1]))
-
-
-  
-
-
+    average_revenue_change = (sum(revenue_change)/total_months)
+    total_revenue_print = ("Total revenue:" + str(total_revenue))
+    total_months_print = ("Total months" + ": " + str(total_months))
+    average_revenue_print = ("Average Revenue Change:" + str(average_revenue_change))
+    print("Financial Analysis")
+    print("__________________________________________________________")
+    print(total_months_print)
+    print(total_revenue_print)
+    print(average_revenue_print)
+    Greatest_increase_revenue = (("Greatest Increase in Revenue:" + date_list[revenue_change.index(max(revenue_change)) ] + " " + str(max(revenue_change))))
+    print(Greatest_increase_revenue)
+    Greatest_decrease_revenue = (("Greatest Decrease in Revenue:" + date_list[revenue_change.index(min(revenue_change)) ] + " " + str(min(revenue_change))))
+    print(Greatest_decrease_revenue)
