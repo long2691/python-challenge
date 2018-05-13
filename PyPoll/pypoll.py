@@ -7,7 +7,7 @@
 import os
 import csv
 csvpath = os.path.join(".", "raw_data","election_data_1.csv")
-
+election_results = "election_analysis.txt"
 voter_id_list = []
 candidate_list = []
 county_list = []
@@ -25,27 +25,32 @@ with open(csvpath, newline='') as csvfile:
         candidate_list.append(candidate)
         #count total months in worksheet
         total_votes = total_votes + 1
-    #j = 0
-    #for i in range(0,len(candidate_list)-1)
-       # unique_candidates.append((candidate_list[j+1] <> revenue_list[j]))
-       # j = j + 1
+for x in candidate_list:
+       if x not in unique_candidates:
+           unique_candidates.append(x)
     
-from collections import Counter
-votes_per_candidate =  Counter(candidate_list)
-
-#print(votes_per_candidate)
-#vestal -- 385440
-#torres - 353320
-#seth 40150
-#Cordin 24090
-#The percentage of votes each candidate won
-#The total number of votes each candidate won
-#The winner of the election based on popular vote.
-#print("Winner:Seth")
-
-print("Election Results")
-print("______________________________")
-print("Total Votes: " + str(total_votes))
-print(votes_per_candidate)
-print("______________________________")
-print("Winner:Seth")
+Candidate_votes = []  
+for candidate in unique_candidates:
+    word_count = candidate_list.count(candidate)  # Pythons count function, count()
+    Candidate_votes.append((candidate,word_count))       
+cand_dict = dict(Candidate_votes)
+#print(cand_dict)
+percent_dict = {}
+for key,values in cand_dict.items():
+    percent_dict[key]=values/total_votes*100
+#print(percent_dict)
+maximum = max(percent_dict, key=percent_dict.get) 
+#print(maximum)
+#for i,j in cand_dict.items()
+    #rounded_percent = round(j/total_votes)*100,1)
+#rounded_percent
+#print(rounded_percent)
+output = (
+        f"Election Results\n"
+        f"______________________________\n"
+        f"Total Votes: {candS_dict}\n"
+        f"Percent Votes: {percent_dict}\n"
+        f"Winner : {maximum}\n")
+print(output)
+file = open("election_results.txt","w")
+file.write(output)

@@ -43,12 +43,23 @@ with open(csvpath, newline='') as csvfile:
     total_revenue_print = ("Total revenue:" + str(total_revenue))
     total_months_print = ("Total months" + ": " + str(total_months))
     average_revenue_print = ("Average Revenue Change:" + str(average_revenue_change))
-    print("Financial Analysis")
-    print("__________________________________________________________")
-    print(total_months_print)
-    print(total_revenue_print)
-    print(average_revenue_print)
+    #print("Financial Analysis")
+    #print("__________________________________________________________")
+    #print(total_months_print)
+    #print(total_revenue_print)
+    #print(average_revenue_print)
     Greatest_increase_revenue = (("Greatest Increase in Revenue:" + date_list[revenue_change.index(max(revenue_change)) ] + " " + str(max(revenue_change))))
-    print(Greatest_increase_revenue)
+    #print(Greatest_increase_revenue)
     Greatest_decrease_revenue = (("Greatest Decrease in Revenue:" + date_list[revenue_change.index(min(revenue_change)) ] + " " + str(min(revenue_change))))
-    print(Greatest_decrease_revenue)
+    #print(Greatest_decrease_revenue)
+output = (
+    f"Financial Analysis\n"
+    f"__________________________________________________________\n"
+    f"{total_months_print}\n"
+    f"{total_revenue_print}\n"
+    f"{average_revenue_print}\n"
+    f"{Greatest_increase_revenue}\n"
+    f"{Greatest_decrease_revenue}\n")
+print(output)
+file = open("finacial_analysis.txt","w")
+file.write(output)
